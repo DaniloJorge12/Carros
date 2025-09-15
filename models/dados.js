@@ -5,7 +5,8 @@ let carros = [
       modelo: "Carro de Corrida",
       ano: 2006,
       cor: "Vermelho",
-      qtdeVitorias: 7
+      qtdeVitorias: 7,
+      velocidadeMaxima: 300
     },
     {
       id: 2,
@@ -13,7 +14,8 @@ let carros = [
       modelo: "Reboque",
       ano: 1955,
       cor: "Marrom",
-      qtdeVitorias: 0
+      qtdeVitorias: 0,
+      velocidadeMaxima: 80
     },
     {
       id: 3,
@@ -21,7 +23,8 @@ let carros = [
       modelo: "Porsche 911",
       ano: 2002,
       cor: "Azul",
-      qtdeVitorias: 1
+      qtdeVitorias: 1,
+      velocidadeMaxima: 250
     },
     {
       id: 4,
@@ -29,7 +32,8 @@ let carros = [
       modelo: "Hudson Hornet",
       ano: 1951,
       cor: "Azul Escuro",
-      qtdeVitorias: 8
+      qtdeVitorias: 8,
+      velocidadeMaxima: 220
     },
     {
       id: 5,
@@ -37,7 +41,8 @@ let carros = [
       modelo: "Carro de Corrida",
       ano: 2017,
       cor: "Cinza Escuro",
-      qtdeVitorias: 6
+      qtdeVitorias: 6,
+      velocidadeMaxima: 320
     },
     {
       id: 6,
@@ -45,7 +50,8 @@ let carros = [
       modelo: "Carro de Corrida",
       ano: 2017,
       cor: "Amarelo",
-      qtdeVitorias: 3
+      qtdeVitorias: 3,
+      velocidadeMaxima: 310
     },
     {
       id: 7,
@@ -53,7 +59,8 @@ let carros = [
       modelo: "Fiat 500",
       ano: 1950,
       cor: "Amarelo",
-      qtdeVitorias: 0
+      qtdeVitorias: 0,
+      velocidadeMaxima: 120
     },
     {
       id: 8,
@@ -61,7 +68,8 @@ let carros = [
       modelo: "Carregador de Pneus",
       ano: 1980,
       cor: "Azul Claro",
-      qtdeVitorias: 0
+      qtdeVitorias: 0,
+      velocidadeMaxima: 100
     },
     {
       id: 9,
@@ -69,7 +77,8 @@ let carros = [
       modelo: "Carro Antigo",
       ano: 1950,
       cor: "Rosa",
-      qtdeVitorias: 0
+      qtdeVitorias: 0,
+      velocidadeMaxima: 130
     },
     {
       id: 10,
@@ -77,8 +86,9 @@ let carros = [
       modelo: "Carro de Corrida",
       ano: 2004,
       cor: "Verde",
-      qtdeVitorias: 5
+      qtdeVitorias: 5,
+      velocidadeMaxima: 290
     }
-  ];
+];
 
 export default carros;
