@@ -10,8 +10,8 @@ const getAllcarros = (req, res) => {
     }
 
     if(id) {
-        resultado = resultado.filter(c => c.id === id)
-    }
+        resultado = resultado.filter(c => c.id === parseInt(id))
+    }    
 
     if(ano) {
         resultado = resultado.filter(c => c.ano === ano)
@@ -37,19 +37,19 @@ const getAllcarros = (req, res) => {
 
 const getCarrosByld = (req, res) => {
     const id = parseInt(req.params.id);
-    const carros = carros.find(b => b.id === id);
+    const carro = carros.find(c => c.id === id);
 
-    if(!carros) {
+    if(!carro) {
         return res.status(404).json({
             message: "Carro não encontrado"
         });
     }
-
-    res.status(200).json(carros);
+    
+    res.status(200).json(carro);    
 };
 
 const createCarro = (req, res) => {
-    const { id, nome, modelo, ano, cor, qtdeVitorias } = req.body;
+    const { nome, modelo, ano, cor, qtdeVitorias } = req.body || {};
 
     if(!nome || !modelo || !cor) {
         return res.status(400).json({
@@ -98,8 +98,9 @@ const deleteCarros = (req, res) => {
     }
 
     //Remover carro com o ID
-    const carrosFiltrados = carros.filter(carros => carros.id !== id);
-    carros.slice(0, carros.length, ...carrosFiltrados);
+    const carrosFiltrados = carros.filter(c => c.id !== id);
+    carros.splice(0, carros.length, ...carrosFiltrados);
+
 
     res.status(200).json({
         success: true,
@@ -109,46 +110,42 @@ const deleteCarros = (req, res) => {
 
 //Update
 const updateCarros = (req, res) => {
-    //Ter logica do put update
     const id = parseInt(req.params.id);
     const { nome, modelo, ano, cor, qtdeVitorias } = req.body;
 
-    //Renomear id
-    if(isNaN(idParaEditar)){
+    if(isNaN(id)){
         return res.status(400).json({
-            sucess: false,
+            success: false,
             message: "O id deve ser válido!"
         })
     }
 
-    //Verificar se tem Carros com Id: idParaEditar existe
-    const carroExiste = carros.find(c => c.id === idParaEditar);
+    const carroExiste = carros.find(c => c.id === id);
     if(!carroExiste){
         return res.status(404).json({
-            sucess: false,
-            message: "O Carro com o id " + idParaEditar + "é inexistente"
+            success: false,
+            message: "O Carro com o id " + id + " é inexistente"
         })
     }
 
-    //
-    const carrosAtualizadas = carros.map(c => c.id === idParaEditar ? {
-        ...c,
-        ...(nome && { nome }),
-        ...(modelo && { modelo }),
-        ...(cor && { cor }),
-        ...(qtdeVitorias && { qtdeVitorias }),
-        ...(ano &&  { ano })
-    }
-        :b
-    )
+    const carrosAtualizado = carros.map(c => 
+        c.id === id ? {
+            ...c,
+            ...(nome && { nome }),
+            ...(modelo && { modelo }),
+            ...(cor && { cor }),
+            ...(qtdeVitorias && { qtdeVitorias }),
+            ...(ano &&  { ano })
+        } : c
+    );
 
-    //Atualizar o Array
-    carros.splice(0, carros.length, ...carroAtualizado);
-    const carroEditado = carros.find(c => c.id === idParaEditar);
+    carros.splice(0, carros.length, ...carrosAtualizado);
+    const carroEditado = carros.find(c => c.id === id);
+
     res.status(200).json({
         success: true,
         message: "Dados do Carro atualizado",
-        b: carroExiste
+        carro: carroEditado
     })
 }
 

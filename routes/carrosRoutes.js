@@ -1,10 +1,12 @@
 import express from "express";
-import { createCarro, deleteCarros, getAllcarros, updateCarros} from "../controllers/carrosController.js";
+import { createCarro, deleteCarros, getAllcarros, updateCarros, getCarrosByld } from "../controllers/carrosController.js";
 
 const router = express.Router();
-router.get("/:id", getAllcarros);
-router.get("/", createCarro);
-router.get("/:id", deleteCarros );
-router.purge("/:id", updateCarros)
+
+router.get("/", getAllcarros);
+router.get("/:id", getCarrosByld);
+router.post("/", createCarro);
+router.put("/:id", updateCarros);
+router.delete("/:id", deleteCarros);
 
 export default router;
